@@ -111,3 +111,47 @@ CREATE TABLE top_cast (
     actor TEXT,
     role TEXT
 );
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS top_cast;
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    year TEXT,
+    rating TEXT,
+    director TEXT
+);
+
+CREATE TABLE top_cast (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    actor TEXT,
+    role TEXT
+);
+
+INSERT INTO movies (
+    title,
+    year,
+    rating,
+    director
+)
+VALUES (
+    "Batman Begins",
+    "2005",
+    "PG-13",
+    "Christopher Nolan"
+),
+(
+    "The Dark Knight",
+    "2008",
+    "PG-13",
+    "Christopher Nolan"
+),
+(
+    "The Dark Knight Rises",
+    "2012",
+    "PG-13",
+    "Christopher Nolan"
+);
+
+SELECT * FROM movies;
