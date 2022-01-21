@@ -95,7 +95,7 @@
 -- TODO!
 
 DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS top_cast;
+DROP TABLE IF EXISTS cast;
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -105,28 +105,9 @@ CREATE TABLE movies (
     director TEXT
 );
 
-CREATE TABLE top_cast (
+CREATE TABLE cast (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    movie_title TEXT,
     actor TEXT,
-    role TEXT
-);
-DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS top_cast;
-
-CREATE TABLE movies (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT,
-    year TEXT,
-    rating TEXT,
-    director TEXT
-);
-
-CREATE TABLE top_cast (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    movie_id INTEGER,
-    actor TEXT,
-    role TEXT
 );
 
 INSERT INTO movies (
@@ -154,4 +135,40 @@ VALUES (
     "Christopher Nolan"
 );
 
+INSERT INTO cast (
+    actor,
+)
+VALUES (
+    "Christian Bale"
+),
+(
+    "Michael Kane"
+),
+(
+    "Liam Neeson"
+),
+(
+    "Katie Holmes"
+),
+(
+    "Gary Oldman"
+),
+(
+    "Heath Ledger"
+),
+(
+    "Aaaron Eckhart"
+),
+(
+    "Maggie Gyllenhaal"
+),
+(
+    "Tom Hardy"
+),
+(
+    "Joseph Gordon-Levitt"
+),
+(
+    "Anne Hathaway"
+);
 SELECT * FROM movies;
