@@ -97,6 +97,7 @@
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS people;
 DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS movie_membership;
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -108,13 +109,20 @@ CREATE TABLE movies (
 
 CREATE TABLE people (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT
+    name TEXT,
+    role_id INTEGER
 );
 
 CREATE TABLE roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role_name TEXT,
     person_id INTEGER
+);
+
+CREATE TABLE movie_membership (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    role_id INTEGER
 );
 
 INSERT INTO movies (
@@ -143,43 +151,56 @@ VALUES (
 );
 
 INSERT INTO people (
-    name
+    name,
+    role_id
 )
 VALUES (
-    "Christopher Nolan"
+    "Christopher Nolan",
+    1
 ),
 (
-    "Christian Bale"
+    "Christian Bale",
+    2
 ),
 (
-    "Michael Caine"
+    "Michael Caine",
+    3
 ),
 (
-    "Liam Neeson"
+    "Liam Neeson",
+    4
 ),
 (
-    "Katie Holmes"
+    "Katie Holmes",
+    5
 ),
 (
-    "Gary Oldman"
+    "Gary Oldman",
+    6
 ),
 (
-    "Heath Ledger"
+    "Heath Ledger",
+    7
 ),
 (
-    "Aaron Eckhart"
+    "Aaron Eckhart",
+    8
 ),
 (
-    "Maggie Gyllenhaal"
+    "Maggie Gyllenhaal",
+    5
 ),
 (
-    "Tom Hardy"
+    "Tom Hardy",
+    9
 ),
 (
-    "Joseph Gordon-Levitt)"
+    "Joseph Gordon-Levitt)",
+    10
 ),
 (
-    "Anne Hathaway"
+    "Anne Hathaway",
+    11
 );
 
 INSERT INTO roles (
@@ -220,4 +241,3 @@ VALUES (
 );
 SELECT * FROM people;
 SELECT * FROM roles;
-SELECT * FROM movies;
