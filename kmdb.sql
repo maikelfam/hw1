@@ -108,7 +108,7 @@ CREATE TABLE movies (
 
 CREATE TABLE people (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
+    name TEXT
 );
 
 CREATE TABLE roles (
@@ -148,5 +148,38 @@ INSERT INTO people (
 )
 VALUES (
     "Christopher Nolan"
+),
+(
+    "Christian Bale"
+),
+(
+    "Michael Caine"
+),
+(
+    "Liam Neeson"
+),
+(
+    "Katie Holmes"
+),
+(
+    "Gary Oldman"
+),
+(
+    "Heath Ledger"
+),
+(
+    "Aaron Eckhart"
+),
+(
+    "Maggie Gyllenhaal"
+),
+(
+    "Tom Hardy"
+),
+(
+    "Joseph Gordon-Levitt)"
+),
+(
+    "Anne Hathaway"
 );
 SELECT * FROM people;
