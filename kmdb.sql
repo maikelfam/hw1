@@ -122,7 +122,7 @@ CREATE TABLE roles (
 CREATE TABLE movie_membership (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     movie_id INTEGER,
-    role_id INTEGER
+    person_id INTEGER
 );
 
 INSERT INTO movies (
@@ -267,7 +267,7 @@ VALUES (
 (
     2,
     2
-)
+),
 (
     2,
     7
@@ -275,7 +275,7 @@ VALUES (
 (
     2,
     8
-)
+),
 (
     2,
     3
@@ -304,5 +304,5 @@ VALUES (
     3,
     12
 );
-SELECT * FROM people;
-SELECT * FROM roles;
+
+SELECT * FROM movie_membership;
