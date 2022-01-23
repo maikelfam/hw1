@@ -239,5 +239,70 @@ VALUES (
 (
     "Selina Kyle"
 );
+
+INSERT INTO movie_membership (
+    movie_id,
+    person_id
+)
+VALUES (
+    1,
+    2
+),
+(
+    1,
+    3
+),
+(
+    1,
+    4
+),
+(
+    1,
+    5
+),
+(
+    1,
+    6
+),
+(
+    2,
+    2
+)
+(
+    2,
+    7
+),
+(
+    2,
+    8
+)
+(
+    2,
+    3
+),
+(
+    2,
+    9
+),
+(
+    3,
+    2
+),
+(
+    3,
+    6
+),
+(
+    3,
+    10
+),
+(
+    3,
+    11
+),
+(
+    3,
+    12
+);
 SELECT * FROM people;
 SELECT * FROM roles;
