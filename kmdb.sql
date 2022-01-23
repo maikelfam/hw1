@@ -114,8 +114,7 @@ CREATE TABLE people (
 CREATE TABLE roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role_name TEXT,
-    person_id INTEGER,
-    movie_id INTEGER
+    person_id INTEGER
 );
 
 INSERT INTO movies (
@@ -182,4 +181,43 @@ VALUES (
 (
     "Anne Hathaway"
 );
+
+INSERT INTO roles (
+    role_name
+)
+VALUES (
+    "Director"
+),
+(
+    "Bruce Wayne"
+),
+(
+    "Alfred"
+),
+(
+    "Ra's Al Ghoul"
+),
+(
+    "Rachel Dawes"
+),
+(
+    "Commissioner Gordon"
+),
+(
+    "Joker"
+),
+(
+    "Harvey Dent"
+),
+(
+    "Bane"
+),
+(
+    "John Blake"
+),
+(
+    "Selina Kyle"
+);
 SELECT * FROM people;
+SELECT * FROM roles;
+SELECT * FROM movies;
