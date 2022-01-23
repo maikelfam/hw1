@@ -95,80 +95,58 @@
 -- TODO!
 
 DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS cast;
+DROP TABLE IF EXISTS people;
+DROP TABLE IF EXISTS roles;
 
 CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     year TEXT,
     rating TEXT,
-    director TEXT
+    director_id INTEGER
 );
 
-CREATE TABLE cast (
+CREATE TABLE people (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    actor TEXT,
+    name TEXT,
+);
+
+CREATE TABLE roles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role_name TEXT,
+    person_id INTEGER,
+    movie_id INTEGER
 );
 
 INSERT INTO movies (
     title,
     year,
     rating,
-    director
+    director_id
 )
 VALUES (
     "Batman Begins",
     "2005",
     "PG-13",
-    "Christopher Nolan"
+    1
 ),
 (
     "The Dark Knight",
     "2008",
     "PG-13",
-    "Christopher Nolan"
+    1
 ),
 (
     "The Dark Knight Rises",
     "2012",
     "PG-13",
-    "Christopher Nolan"
+    1
 );
 
-INSERT INTO cast (
-    actor,
+INSERT INTO people (
+    name
 )
 VALUES (
-    "Christian Bale"
-),
-(
-    "Michael Kane"
-),
-(
-    "Liam Neeson"
-),
-(
-    "Katie Holmes"
-),
-(
-    "Gary Oldman"
-),
-(
-    "Heath Ledger"
-),
-(
-    "Aaaron Eckhart"
-),
-(
-    "Maggie Gyllenhaal"
-),
-(
-    "Tom Hardy"
-),
-(
-    "Joseph Gordon-Levitt"
-),
-(
-    "Anne Hathaway"
+    "Christopher Nolan"
 );
-SELECT * FROM movies;
+SELECT * FROM people;
