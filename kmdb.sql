@@ -77,18 +77,13 @@
 -- TODO!
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+
 
 -- The SQL statement for the movies output
 -- TODO!
 
 -- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
+
 
 
 -- The SQL statement for the cast output
@@ -103,8 +98,7 @@ CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     year TEXT,
-    rating TEXT,
-    director_id INTEGER
+    rating TEXT
 );
 
 CREATE TABLE people (
@@ -128,26 +122,22 @@ CREATE TABLE movie_membership (
 INSERT INTO movies (
     title,
     year,
-    rating,
-    director_id
+    rating
 )
 VALUES (
     "Batman Begins",
     "2005",
-    "PG-13",
-    1
+    "PG-13"
 ),
 (
     "The Dark Knight",
     "2008",
-    "PG-13",
-    1
+    "PG-13"
 ),
 (
     "The Dark Knight Rises",
     "2012",
-    "PG-13",
-    1
+    "PG-13"
 );
 
 INSERT INTO people (
@@ -246,6 +236,10 @@ INSERT INTO movie_membership (
 )
 VALUES (
     1,
+    1
+),
+(
+    1,
     2
 ),
 (
@@ -263,6 +257,10 @@ VALUES (
 (
     1,
     6
+),
+(
+    2,
+    1
 ),
 (
     2,
@@ -286,6 +284,10 @@ VALUES (
 ),
 (
     3,
+    1
+),
+(
+    3,
     2
 ),
 (
@@ -305,4 +307,23 @@ VALUES (
     12
 );
 
-SELECT * FROM movie_membership;
+.print "Movies"
+.print "======"
+.print ""
+SELECT movies.title, movies.year, movies.rating, people.name
+FROM movies
+INNER JOIN movie_membership ON movie_membership.movie_id = movies.id
+INNER JOIN people ON people.role_id = movie_membership.person_id
+WHERE people.role_id = 1;
+
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
+
+SELECT movies.title, people.name, roles.role_name
+FROM movies
+INNER JOIN movie_membership ON movie_membership.movie_id = movies.id
+INNER JOIN people ON people.role_id = movie_membership.person_id
+INNER JOIN roles ON roles.id = people.role_id
+WHERE people.role_id > 1;
