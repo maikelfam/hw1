@@ -98,223 +98,191 @@ CREATE TABLE movies (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT,
     year TEXT,
-    rating TEXT
+    rating TEXT,
+    director_id INTEGER
 );
 
 CREATE TABLE people (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    role_id INTEGER
+    name TEXT
 );
 
 CREATE TABLE roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role_name TEXT,
-    person_id INTEGER
-);
-
-CREATE TABLE movie_membership (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    movie_id INTEGER,
-    person_id INTEGER
+    person_id INTEGER,
+    movie_id INTEGER
 );
 
 INSERT INTO movies (
     title,
     year,
-    rating
+    rating,
+    director_id
 )
 VALUES (
     "Batman Begins",
     "2005",
-    "PG-13"
+    "PG-13",
+    1
 ),
 (
     "The Dark Knight",
     "2008",
-    "PG-13"
+    "PG-13",
+    1
 ),
 (
     "The Dark Knight Rises",
     "2012",
-    "PG-13"
+    "PG-13",
+    1
 );
 
 INSERT INTO people (
-    name,
-    role_id
+    name
 )
 VALUES (
-    "Christopher Nolan",
-    1
+    "Christopher Nolan"
 ),
 (
-    "Christian Bale",
-    2
+    "Christian Bale"
 ),
 (
-    "Michael Caine",
-    3
+    "Michael Caine"
 ),
 (
-    "Liam Neeson",
-    4
+    "Liam Neeson"
 ),
 (
-    "Katie Holmes",
-    5
+    "Katie Holmes"
 ),
 (
-    "Gary Oldman",
-    6
+    "Gary Oldman"
 ),
 (
-    "Heath Ledger",
-    7
+    "Heath Ledger"
 ),
 (
-    "Aaron Eckhart",
-    8
+    "Aaron Eckhart"
 ),
 (
-    "Maggie Gyllenhaal",
-    5
+    "Maggie Gyllenhaal"
 ),
 (
-    "Tom Hardy",
-    9
+    "Tom Hardy"
 ),
 (
-    "Joseph Gordon-Levitt)",
-    10
+    "Joseph Gordon-Levitt"
 ),
 (
-    "Anne Hathaway",
-    11
+    "Anne Hathaway"
 );
 
 INSERT INTO roles (
-    role_name
+    role_name,
+    person_id,
+    movie_id
 )
 VALUES (
-    "Director"
-),
-(
-    "Bruce Wayne"
-),
-(
-    "Alfred"
-),
-(
-    "Ra's Al Ghoul"
-),
-(
-    "Rachel Dawes"
-),
-(
-    "Commissioner Gordon"
-),
-(
-    "Joker"
-),
-(
-    "Harvey Dent"
-),
-(
-    "Bane"
-),
-(
-    "John Blake"
-),
-(
-    "Selina Kyle"
-);
-
-INSERT INTO movie_membership (
-    movie_id,
-    person_id
-)
-VALUES (
+    "Director",
     1,
     1
 ),
 (
+    "Director",
     1,
     2
 ),
 (
+    "Director",
     1,
     3
 ),
 (
-    1,
-    4
-),
-(
-    1,
-    5
-),
-(
-    1,
-    6
-),
-(
+    "Bruce Wayne",
     2,
     1
 ),
 (
+    "Bruce Wayne",
     2,
     2
 ),
 (
-    2,
-    7
-),
-(
-    2,
-    8
-),
-(
+    "Bruce Wayne",
     2,
     3
 ),
 (
-    2,
-    9
-),
-(
+    "Alfred",
     3,
     1
 ),
 (
+    "Alfred",
     3,
     2
 ),
 (
-    3,
-    6
+    "Ra's Al Ghoul",
+    4,
+    1
 ),
 (
-    3,
-    10
+    "Rachel Dawes",
+    5,
+    1
 ),
 (
-    3,
-    11
+    "Rachel Dawes",
+    9,
+    2
 ),
 (
-    3,
-    12
+    "Commissioner Gordon",
+    6,
+    1
+),
+(
+    "Commissioner Gordon",
+    6,
+    3
+),
+(
+    "Joker",
+    7,
+    2
+),
+(
+    "Harvey Dent",
+    8,
+    2
+),
+(
+    "Bane",
+    10,
+    3
+),
+(
+    "John Blake",
+    11,
+    3
+),
+(
+    "Selina Kyle",
+    12,
+    3
 );
 
+
+.width 25 25 25 25 25 
 .print "Movies"
 .print "======"
 .print ""
 SELECT movies.title, movies.year, movies.rating, people.name
 FROM movies
-INNER JOIN movie_membership ON movie_membership.movie_id = movies.id
-INNER JOIN people ON people.role_id = movie_membership.person_id
-WHERE people.role_id = 1;
+INNER JOIN people ON people.id = movies.director_id;
 
 .print ""
 .print "Top Cast"
@@ -323,7 +291,7 @@ WHERE people.role_id = 1;
 
 SELECT movies.title, people.name, roles.role_name
 FROM movies
-INNER JOIN movie_membership ON movie_membership.movie_id = movies.id
-INNER JOIN people ON people.role_id = movie_membership.person_id
-INNER JOIN roles ON roles.id = people.role_id
-WHERE people.role_id > 1;
+INNER JOIN roles ON roles.movie_id = movies.id
+INNER JOIN people ON people.id = roles.person_id
+WHERE people.id > 1
+ORDER BY movies.title;
